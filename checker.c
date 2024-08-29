@@ -10,7 +10,7 @@ int batteryIsOk(float temperature, float soc, float chargeRate) {
     printf("State of Charge out of range!\n");
     return 0;
   }
-  if (chargeRates > CHARGE_RATE_MAXi) {
+  if (chargeRate > CHARGE_RATE_MAXi) {
     printf("Charge Rate out of range!\n");
     return 0;
   }
