@@ -10,10 +10,10 @@ int checkCondition(float value, float min, float max, const char* message) {
 }
 
 int batteryIsOk(float temperature, float soc, float chargeRate) {
-    if (!checkCondition(temperature, 0, 45, "Temperature out of range!")) {
+    if (!checkCondition(temperature, 0, 45, "Temperature out of range!\n")) {
         return 0;
     }
-    if (!checkCondition(soc, 20, 80, "State of Charge out of range!")) {
+    if (!checkCondition(soc, 20, 80, "State of Charge out of range!\n")) {
         return 0;
     }
     if (chargeRate > 0.8) {
