@@ -10,18 +10,16 @@ int checkCondition(float value, float min, float max, const char* message) {
 }
 
 int batteryIsOk(float temperature, float soc, float chargeRate) {
-    int a = checkCondition(temperature, 0, 45, "Temperature out of range!\n");
-    int b = checkCondition(soc, 20, 80, "State of Charge out of range!\n");
-    int chargeRateOk = (chargeRate <= 0.8);
-
-    // Consolidate all conditions and return 0 if any check fails
-    if (!a || !b || !chargeRateOk) {
-        if (!chargeRateOk) {
-            printf("Charge Rate out of range!\n");
-        }
+    if (!checkCondition(temperature, 0, 45, "Temperature out of range!")) {
         return 0;
     }
-
+    if (!checkCondition(soc, 20, 80, "State of Charge out of range!")) {
+        return 0;
+    }
+    if (chargeRate > 0.8) {
+        printf("Charge Rate out of range!\n");
+        return 0;
+    }
     return 1;
 }
 
