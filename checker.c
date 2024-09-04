@@ -32,5 +32,6 @@ int main() {
   assert(!batteryIsOk(50, 85, 0));   // Temperature and SOC out of range
   assert(!batteryIsOk(25, 85, 0));   // SOC out of range
   assert(!batteryIsOk(50, 70, 0));   // Temperature out of range
+  assert(!batteryIsOk(25, 70, 0.7)); // Charge Rate out of range
   assert(!batteryIsOk(50, 80, 0.7)); // All out of range
 }
