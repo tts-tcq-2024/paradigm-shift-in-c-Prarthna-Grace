@@ -9,8 +9,9 @@ int checkCondition(float value, float min, float max, const char* message) {
     return 1;
 }
 
-void display(const char* message){
+int display(const char* message){
 printf("%s", message);
+return 0;
 }
 
 int batteryIsOk(float temperature, float soc, float chargeRate) {
