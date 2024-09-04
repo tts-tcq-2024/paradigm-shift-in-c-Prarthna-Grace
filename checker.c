@@ -9,9 +9,8 @@ int checkCondition(float value, float min, float max, const char* message) {
     return 1;
 }
 
-int display(const char* message){
+void display(const char* message){
 printf("%s", message);
-return 0;
 }
 
 int batteryIsOk(float temperature, float soc, float chargeRate) {
@@ -29,9 +28,9 @@ int batteryIsOk(float temperature, float soc, float chargeRate) {
 }
 
 int main() {
-  assert(batteryIsOk(25, 70, 0.7));
-  assert(!batteryIsOk(50, 85, 0));
-  assert(!batteryIsOk(25, 85, 0));
-  assert(!batteryIsOk(50, 70, 0));
-  assert(!batteryIsOk(50, 80, 0.7));
+  assert(batteryIsOk(25, 70, 0.7));  // All conditions OK
+  assert(!batteryIsOk(50, 85, 0));   // Temperature and SOC out of range
+  assert(!batteryIsOk(25, 85, 0));   // SOC out of range
+  assert(!batteryIsOk(50, 70, 0));   // Temperature out of range
+  assert(!batteryIsOk(50, 80, 0.7)); // All out of range
 }
