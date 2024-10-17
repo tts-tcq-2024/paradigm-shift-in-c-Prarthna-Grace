@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<checker.c>
 #include<check_condition.c>
+#include<check_warning.c>
 
 int batteryIsOk(float temperature, float soc, float chargeRate) {
     int isokay = 1;
