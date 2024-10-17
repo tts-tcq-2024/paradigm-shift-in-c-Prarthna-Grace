@@ -1,5 +1,5 @@
 #include<stdio.h>
-#include<checker.h>
+#include"checker.h"
 
 int batteryIsOk(float temperature, float soc, float chargeRate) {
     int isokay = 1;
