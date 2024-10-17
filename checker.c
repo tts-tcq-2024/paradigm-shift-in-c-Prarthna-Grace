@@ -1,32 +1,28 @@
 #include <stdio.h>
 #include <assert.h>
+#include"checker.h"
 
-int checkCondition(float value, float min, float max, const char* message) {
-    if (value < min || value > max) {
-        printf("%s", message);
-        return 0;
-    }
-    return 1;
-}
-
-int batteryIsOk(float temperature, float soc, float chargeRate) {
-    int a = 1;
-
-    a &= checkCondition(temperature, 0, 45, "Temperature out of range!\n");
-    a &= checkCondition(soc, 20, 80, "State of Charge out of range!\n");
-    
-    if (chargeRate > 0.8) {
-        printf("Charge Rate out of range!\n");
-        a = 0;
-    }
-
-    return a;
+void display(const char* message){
+    printf("%s", message);
 }
 
 int main() {
-  assert(batteryIsOk(25, 70, 0.7));
-  assert(!batteryIsOk(50, 85, 0));
-  assert(!batteryIsOk(25, 85, 0));
-  assert(!batteryIsOk(50, 70, 0));
-  assert(!batteryIsOk(50, 80, 0.7));
+    // Normal case
+    assert(batteryIsOk(25, 70, 0.7)); 
+    // Temperature out of range
+    assert(!batteryIsOk(50, 85, 0)); 
+    // State of Charge out of range
+    assert(!batteryIsOk(25, 85, 0)); 
+     // Temperature out of range
+    assert(!batteryIsOk(50, 70, 0));  
+     // Charge rate out of range
+    assert(!batteryIsOk(25, 70, 0.9)); 
+    // Temperature out of range with valid SoC
+    assert(!batteryIsOk(50, 80, 0.7));
+    // Approaching discharge warning for SoC
+    assert(batteryIsOk(25, 21, 0.7)); // Should be okay but with a warning
+    // Approaching charge-peak warning for SoC
+    assert(batteryIsOk(25, 78, 0.7)); // Should be okay but with a warning
+    // Charge rate approaching maximum (0.75)
+    assert(batteryIsOk(25, 70, 0.75)); // Should be okay but with a warning
 }
