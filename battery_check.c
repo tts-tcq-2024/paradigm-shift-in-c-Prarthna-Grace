@@ -1,4 +1,6 @@
 #include<stdio.h>
+#include<checker.c>
+#include<check_condition.c>
 
 int batteryIsOk(float temperature, float soc, float chargeRate) {
     int isokay = 1;
