@@ -1,5 +1,5 @@
 #include<stdio.h>
-#include<checker.h>
+#include"checker.h"
 
 void display(const char* message) {
     printf("%s", message);
