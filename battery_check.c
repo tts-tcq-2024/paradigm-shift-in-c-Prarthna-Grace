@@ -6,11 +6,11 @@ int batteryIsOk(float temperature, float soc, float chargeRate) {
 
      // Check temperature and display warnings if needed
     isokay &= checkCondition(temperature, 0, 45, "Temperature out of range!\n");
-    checkWarning(temperature, 0, 45);
+   checkTemperatureWarning(temperature, 0, 45);
     
      // Check SoC and display warnings if needed
     isokay &= checkCondition(soc, 20, 80, "State of Charge out of range!\n");
-    checkWarning(soc, 20, 80);
+    checkSocWarning(soc, 20, 80);
 
     // Check charge rate and warning
     checkChargeRateWarning(chargeRate);
