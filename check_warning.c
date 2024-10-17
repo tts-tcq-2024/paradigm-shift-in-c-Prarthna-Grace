@@ -1,5 +1,9 @@
 #include<stdio.h>
-#include<checker.c>
+#include<checker.h>
+
+void display(const char* message) {
+    printf("%s", message);
+}
 
 int checkWarning(float value, float min, float max) {
     float warningThreshold = 0.05 * max; // 5% of the max value
