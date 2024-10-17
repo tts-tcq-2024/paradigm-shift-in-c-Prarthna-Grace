@@ -1,10 +1,6 @@
 #include<stdio.h>
 #include"checker.h"
 
-void display(const char* message) {
-    printf("%s", message);
-}
-
 // Function to check if value is approaching discharge
 int checkApproachingDischarge(float value, float min, float warningThreshold) {
     if (value >= min && value < (min + warningThreshold)) {
