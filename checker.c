@@ -22,7 +22,7 @@ int main() {
     // Approaching discharge warning for SoC
     assert(batteryIsOk(25, 21, 0.7)); // Should be okay but with a warning
     // Approaching charge-peak warning for SoC
-    assert(batteryIsOk(25, 82, 0.7)); // Should be okay but with a warning
+    assert(batteryIsOk(25, 78, 0.7)); // Should be okay but with a warning
     // Charge rate approaching maximum (0.75)
     assert(batteryIsOk(25, 70, 0.75)); // Should be okay but with a warning
 }
