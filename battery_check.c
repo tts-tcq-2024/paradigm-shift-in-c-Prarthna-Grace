@@ -13,10 +13,9 @@ int batteryIsOk(float temperature, float soc, float chargeRate) {
     checkWarning(soc, 20, 80);
 
     // Check charge rate and warning
-    if (checkChargeRateWarning(chargeRate)) {
-        isokay = 1; // If there's a warning, mark it as okay and display warning
-    }
-    
+    checkChargeRateWarning(chargeRate);
+
+    // Check for charge rate out of range
     if (chargeRate > 0.8) {
         display("Charge Rate out of range!\n");
         isokay = 0;
